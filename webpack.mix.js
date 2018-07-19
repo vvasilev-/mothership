@@ -1,4 +1,5 @@
 let mix = require('laravel-mix');
+let importer = require('node-sass-glob-importer')();
 
 /*
  |--------------------------------------------------------------------------
@@ -12,4 +13,4 @@ let mix = require('laravel-mix');
  */
 
 mix.react('resources/assets/js/main.js', 'public/js/bundle.js')
-   .sass('resources/assets/sass/main.scss', 'public/css/bundle.css');
+   .sass('resources/assets/sass/main.scss', 'public/css/bundle.css', { importer });
