@@ -8,7 +8,7 @@ indent_style = space
 indent_size = 4
 trim_trailing_whitespace = true
 
-[resources/*.{php,scss,js}]
+[*.{scss,js}]
 indent_style = tab
 
 [*.md]
