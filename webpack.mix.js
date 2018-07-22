@@ -13,4 +13,5 @@ let importer = require('node-sass-glob-importer')();
  */
 
 mix.react('resources/assets/js/main.js', 'public/js/bundle.js')
+   .extract(['react', 'react-dom'])
    .sass('resources/assets/sass/main.scss', 'public/css/bundle.css', { importer });
