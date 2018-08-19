@@ -4,6 +4,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form as FormikForm } from 'formik';
+import { IconNames } from '@blueprintjs/icons';
+import {
+	Intent,
+	Toast,
+	Toaster
+} from '@blueprintjs/core';
 import {
 	get,
 	has,
@@ -110,9 +116,29 @@ class Form extends React.PureComponent {
 		return (
 			<Formik {...restProps} onSubmit={onSubmit || this.handleSubmit}>
 				{(context) => (
-					<FormikForm>
-						{children(context)}
-					</FormikForm>
+					<React.Fragment>
+						<FormikForm>
+							{children(context)}
+						</FormikForm>
+
+						<Toaster>
+							{
+								(context.status && context.status.error) && (
+									<Toast
+										icon={IconNames.WARNING_SIGN}
+										intent={Intent.DANGER}
+										message={`
+											Заявката не може да се изпълни.
+											Моля опитайте отново.
+										`}
+										onDismiss={() => context.setStatus(null)}
+									>
+
+									</Toast>
+								)
+							}
+						</Toaster>
+					</React.Fragment>
 				)}
 			</Formik>
 		);
