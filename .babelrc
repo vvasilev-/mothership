@@ -2,6 +2,7 @@
   "presets": ["flow"],
   "plugins": [
     "syntax-dynamic-import",
+    "transform-class-properties",
     ["module-resolver", {
       "root": ["./resources/assets/js"]
     }]

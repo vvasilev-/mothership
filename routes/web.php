@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return 'Welcome';
+/**
+ * Core
+ */
+Route::namespace('Core\Http\Controllers')->group(function() {
+    Route::get('login', 'LoginController@show')->name('core.login');
+    Route::post('login', 'LoginController@store');
 });

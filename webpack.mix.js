@@ -1,5 +1,4 @@
 let mix = require('laravel-mix');
-let importer = require('node-sass-glob-importer')();
 
 /*
  |--------------------------------------------------------------------------
@@ -13,5 +12,20 @@ let importer = require('node-sass-glob-importer')();
  */
 
 mix.react('resources/assets/js/main.js', 'public/js/bundle.js')
-   .extract(['react', 'react-dom'])
-   .sass('resources/assets/sass/main.scss', 'public/css/bundle.css', { importer });
+   .extract([
+       'react',
+       'react-dom',
+       'react-emotion',
+       'formik',
+       'recompose',
+       'emotion',
+       'prop-types',
+       'axios',
+       'lodash',
+       'yup',
+       '@blueprintjs/core',
+       '@blueprintjs/icons',
+       '@blueprintjs/core/lib/css/blueprint.css',
+       '@blueprintjs/icons/lib/css/blueprint-icons.css',
+       'sanitize.css/sanitize.css'
+    ]);

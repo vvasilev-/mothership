@@ -3,18 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name') }}</title>
 
-    <link rel="stylesheet" href="{{ mix('css/bundle.css') }}">
-
-    <script defer src="{{ mix('js/manifest.js') }}"></script>
-    <script defer src="{{ mix('js/vendor.js') }}"></script>
-    <script defer src="{{ mix('js/bundle.js') }}"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;subset=cyrillic">
 </head>
 <body>
-    {{ $slot }}
+    @section('app')
+        <div class="app"></div>
+    @show
 
-    @stack('scripts')
+    @include('partials.scripts')
 </body>
 </html>
