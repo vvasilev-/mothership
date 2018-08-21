@@ -3,6 +3,11 @@
  */
 import React from 'react';
 
+/**
+ * Internal dependencies.
+ */
+import Layout from 'layout';
+
 class Dashboard extends React.Component {
 	/**
 	 * Render the component.
@@ -11,9 +16,7 @@ class Dashboard extends React.Component {
 	 */
 	render() {
 		return (
-			<div>
-				Welcome to dashboard.
-			</div>
+			<Layout />
 		);
 	}
 }

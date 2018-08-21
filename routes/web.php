@@ -15,8 +15,10 @@
  * Core
  */
 Route::namespace('Core\Http\Controllers')->group(function() {
+    Route::redirect('/', '/dashboard');
+
     Route::get('/login', 'LoginController@show')->name('core.login');
     Route::post('/login', 'LoginController@store');
 
-    Route::get('/', 'DashboardController@show')->name('core.dashboard');
+    Route::get('/dashboard', 'DashboardController@show')->name('core.dashboard');
 });
