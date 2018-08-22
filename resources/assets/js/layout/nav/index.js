@@ -2,6 +2,7 @@
  * External dependencies.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
 	Navbar,
 	AnchorButton,
@@ -46,6 +47,15 @@ class Nav extends React.Component {
 						minimal
 					>
 						Табло
+					</AnchorButton>
+
+					<AnchorButton
+						href={route('stockroom.dashboard')}
+						icon={IconNames.SHOP}
+						active={this.isCurrent('stockroom.dashboard')}
+						minimal
+					>
+						Склад
 					</AnchorButton>
 				</Navbar.Group>
 
