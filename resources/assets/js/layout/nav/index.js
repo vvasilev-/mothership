@@ -12,6 +12,11 @@ import {
 import { IconNames } from '@blueprintjs/icons';
 import { startsWith } from 'lodash';
 
+/**
+ * Internal dependencies.
+ */
+import ButtonLogout from 'layout/nav/button-logout';
+
 class Nav extends React.Component {
 	/**
 	 * Check if the route is the current one.
@@ -45,7 +50,7 @@ class Nav extends React.Component {
 				<Navbar.Group align={Alignment.RIGHT}>
 					<Navbar.Divider />
 
-					<Button minimal icon={IconNames.LOG_OUT} />
+					<ButtonLogout />
 				</Navbar.Group>
 			</Navbar>
 		);

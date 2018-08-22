@@ -71,4 +71,17 @@ class LoginController extends Controller
             'redirect_url' => $this->redirectPath(),
         ]);
     }
+
+    /**
+     * The user has logged out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return mixed
+     */
+    protected function loggedOut(Request $request)
+    {
+        return response()->json([
+            'redirect_url' => route('core.login'),
+        ]);
+    }
 }

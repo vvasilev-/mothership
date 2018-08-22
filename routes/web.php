@@ -19,6 +19,7 @@ Route::namespace('Core\Http\Controllers')->group(function() {
 
     Route::get('/login', 'LoginController@showLoginForm')->name('core.login');
     Route::post('/login', 'LoginController@login');
+    Route::post('/logout', 'LoginController@logout')->name('core.logout');
 
     Route::get('/dashboard', 'DashboardController@show')->name('core.dashboard');
 });
