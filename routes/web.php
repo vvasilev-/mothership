@@ -23,3 +23,12 @@ Route::namespace('Core\Http\Controllers')->group(function() {
 
     Route::get('/dashboard', 'DashboardController@show')->name('core.dashboard');
 });
+
+/**
+ * Stockroom
+ */
+Route::namespace('Stockroom\Http\Controllers')
+    ->prefix('stockroom')
+    ->group(function() {
+        Route::get('/', 'DashboardController@show')->name('stockroom.dashboard');
+    });

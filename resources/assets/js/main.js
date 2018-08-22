@@ -12,6 +12,7 @@ import { find, assign } from 'lodash';
 import './styles/global';
 import './styles/document';
 import Core from 'modules/core';
+import Stockroom from 'modules/stockroom';
 
 /**
  * Disable the focus on non-keyboard interactions.
@@ -24,7 +25,8 @@ FocusStyleManager.onlyShowFocusOnTabs();
 (async () => {
 	const chunk = find(assign(
 		{},
-		Core
+		Core,
+		Stockroom
 	), (chunk, key) => key === window.app.chunk);
 
 	if (chunk) {
