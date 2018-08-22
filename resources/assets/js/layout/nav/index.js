@@ -4,7 +4,6 @@
 import React from 'react';
 import {
 	Navbar,
-	Button,
 	AnchorButton,
 	Alignment,
 	Classes
@@ -15,6 +14,7 @@ import { startsWith } from 'lodash';
 /**
  * Internal dependencies.
  */
+import withRouter from 'common/with-router';
 import ButtonLogout from 'layout/nav/button-logout';
 
 class Nav extends React.Component {
@@ -25,7 +25,7 @@ class Nav extends React.Component {
 	 * @return {Boolean}
 	 */
 	isCurrent(prefix) {
-		return startsWith(prefix, window.route().current());
+		return startsWith(prefix, this.props.route().current());
 	}
 
 	/**
@@ -34,11 +34,13 @@ class Nav extends React.Component {
 	 * @return {Object}
 	 */
 	render() {
+		const { route } = this.props;
+
 		return (
 			<Navbar className={Classes.DARK}>
 				<Navbar.Group align={Alignment.LEFT}>
 					<AnchorButton
-						href={window.route('core.dashboard')}
+						href={route('core.dashboard')}
 						icon={IconNames.DASHBOARD}
 						active={this.isCurrent('core.dashboard')}
 						minimal
@@ -57,4 +59,13 @@ class Nav extends React.Component {
 	}
 }
 
-export default Nav;
+/**
+ * Interface.
+ *
+ * @type {Object}
+ */
+Nav.propTypes = {
+	route: PropTypes.func.isRequired
+};
+
+export default withRouter(Nav);

@@ -2,6 +2,7 @@
  * External dependencies.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { IconNames } from '@blueprintjs/icons';
 import {
 	Button,
@@ -14,6 +15,7 @@ import {
 /**
  * Internal dependencies.
  */
+import withRouter from 'common/with-router';
 import Form from 'components/form';
 import FormError from 'components/form-error';
 import Card from 'modules/core/login/card';
@@ -32,7 +34,7 @@ class Login extends React.Component {
 			<Container>
 				<Card>
 					<Form
-						action="/login"
+						action={route('core.login')}
 						method="post"
 						validationSchema={schema}
 						initialValues={{
@@ -88,4 +90,13 @@ class Login extends React.Component {
 	}
 }
 
-export default Login;
+/**
+ * Interface.
+ *
+ * @type {Object}
+ */
+Login.propTypes = {
+	route: PropTypes.func.isRequired
+};
+
+export default withRouter(Login);
