@@ -11,8 +11,8 @@ import { find, assign } from 'lodash';
  */
 import './styles/global';
 import './styles/document';
-import Core from 'modules/core';
-import Stockroom from 'modules/stockroom';
+import Core from 'views/core';
+import Stockroom from 'views/stockroom';
 
 /**
  * Disable the focus on non-keyboard interactions.

@@ -18,10 +18,10 @@ import {
 import withRouter from 'common/with-router';
 import Form from 'components/form';
 import FormError from 'components/form-error';
-import Card from 'modules/core/login/card';
-import Container from 'modules/core/login/container';
-import Actions from 'modules/core/login/actions';
-import schema from 'modules/core/login/schema';
+import Card from 'views/core/login/card';
+import Container from 'views/core/login/container';
+import Actions from 'views/core/login/actions';
+import schema from 'views/core/login/schema';
 
 class Login extends React.Component {
 	/**

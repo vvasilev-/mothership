@@ -45,7 +45,7 @@ mix.webpackConfig({
 			async: '/js/common',
 			children: true,
 			minChunks(module) {
-				return module.resource && module.resource.indexOf('modules') === -1;
+				return module.resource && module.resource.indexOf('views') === -1;
 			}
 		}),
 
