@@ -1,4 +1,5 @@
 let mix = require('laravel-mix');
+let webpack = require('webpack');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,21 +12,53 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.react('resources/assets/js/main.js', 'public/js/bundle.js')
-   .extract([
-       'react',
-       'react-dom',
-       'react-emotion',
-       'formik',
-       'recompose',
-       'emotion',
-       'prop-types',
-       'axios',
-       'lodash',
-       'yup',
-       '@blueprintjs/core',
-       '@blueprintjs/icons',
-       '@blueprintjs/core/lib/css/blueprint.css',
-       '@blueprintjs/icons/lib/css/blueprint-icons.css',
-       'sanitize.css/sanitize.css'
-    ]);
+mix.webpackConfig({
+	entry: {
+		'/js/vendor': [
+			'react',
+			'react-dom',
+			'react-emotion',
+			'formik',
+			'recompose',
+			'emotion',
+			'prop-types',
+			'axios',
+			'lodash',
+			'yup',
+			'@blueprintjs/core',
+			'@blueprintjs/icons',
+			'@blueprintjs/core/lib/css/blueprint.css',
+			'@blueprintjs/icons/lib/css/blueprint-icons.css',
+			'sanitize.css/sanitize.css'
+		]
+	},
+
+	plugins: [
+		new webpack.optimize.CommonsChunkPlugin({
+			name: '/js/vendor',
+			filename: '/js/vendor.js',
+			minChunks: Infinity
+		}),
+
+		new webpack.optimize.CommonsChunkPlugin({
+			name: '/js/bundle',
+			async: '/js/common',
+			children: true,
+			minChunks(module) {
+				return module.resource && module.resource.indexOf('modules') === -1;
+			}
+		}),
+
+		new webpack.optimize.CommonsChunkPlugin({
+			name: '/js/manifest',
+			filename: '/js/manifest.js',
+			minChunks: Infinity
+		})
+	]
+});
+
+mix.react('resources/assets/js/main.js', 'public/js/bundle.js');
+
+if (mix.inProduction()) {
+	mix.version();
+}

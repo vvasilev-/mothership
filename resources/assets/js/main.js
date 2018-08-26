@@ -40,4 +40,3 @@ FocusStyleManager.onlyShowFocusOnTabs();
 		throw new Error(`Could not find the chunk - ${window.app.chunk}`);
 	}
 })();
-
