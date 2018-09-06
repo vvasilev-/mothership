@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStockroomProductsTable extends Migration
+class CreateStockroomProductVariationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateStockroomProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stockroom_products', function (Blueprint $table) {
+        Schema::create('stockroom_product_variations', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('product_id');
             $table->string('title');
             $table->timestamps();
             $table->softDeletes();
@@ -28,6 +29,6 @@ class CreateStockroomProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stockroom_products');
+        Schema::dropIfExists('stockroom_product_variations');
     }
 }

@@ -5,7 +5,7 @@ namespace App\Stockroom\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Product extends Model
+class ProductVariation extends Model
 {
     use SoftDeletes;
 
@@ -14,7 +14,7 @@ class Product extends Model
      *
      * @var string
      */
-    protected $table = 'stockroom_products';
+    protected $table = 'stockroom_product_variations';
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +22,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
+        'product_id',
         'title',
     ];
 }
