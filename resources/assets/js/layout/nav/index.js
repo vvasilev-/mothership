@@ -16,6 +16,7 @@ import { startsWith } from 'lodash';
  * Internal dependencies.
  */
 import withRouter from 'common/with-router';
+import MenuAdd from 'layout/nav/menu-add';
 import ButtonLogout from 'layout/nav/button-logout';
 
 class Nav extends React.Component {
@@ -60,6 +61,8 @@ class Nav extends React.Component {
 				</Navbar.Group>
 
 				<Navbar.Group align={Alignment.RIGHT}>
+					<MenuAdd />
+
 					<Navbar.Divider />
 
 					<ButtonLogout />

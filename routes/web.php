@@ -31,4 +31,8 @@ Route::namespace('Stockroom\Http\Controllers')
     ->prefix('stockroom')
     ->group(function() {
         Route::get('/', 'DashboardController@show')->name('stockroom.dashboard');
+
+        Route::prefix('products')->group(function() {
+            Route::post('/', 'ProductsController@create')->name('stockroom.products.create');
+        });
     });
