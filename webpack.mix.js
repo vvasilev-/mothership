@@ -25,6 +25,7 @@ mix.webpackConfig({
 			'axios',
 			'lodash',
 			'yup',
+			'unstated',
 			'@blueprintjs/core',
 			'@blueprintjs/icons',
 			'@blueprintjs/core/lib/css/blueprint.css',

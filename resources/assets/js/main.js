@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'unstated';
 import { FocusStyleManager } from '@blueprintjs/core';
 import { find, assign } from 'lodash';
 
@@ -11,6 +12,7 @@ import { find, assign } from 'lodash';
  */
 import './styles/global';
 import './styles/document';
+import DialogManager from 'dialogs/manager';
 import Core from 'views/core';
 import Stockroom from 'views/stockroom';
 
@@ -33,7 +35,10 @@ FocusStyleManager.onlyShowFocusOnTabs();
 		const { default: Component } = await chunk();
 
 		ReactDOM.render(
-			<Component />,
+			<Provider>
+				<Component />
+				<DialogManager />
+			</Provider>,
 			document.querySelector('.app')
 		);
 	} else {

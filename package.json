@@ -22,6 +22,7 @@
         "react-emotion": "^9.2.6",
         "recompose": "^0.28.2",
         "sanitize.css": "^6.0.0",
+        "unstated": "^2.1.1",
         "yup": "^0.26.2"
     },
     "devDependencies": {
