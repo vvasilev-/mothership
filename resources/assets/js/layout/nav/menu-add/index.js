@@ -31,7 +31,7 @@ class MenuAdd extends React.PureComponent {
 				<Subscribe to={[DialogContainer]}>
 					{(dialog) => {
 						return (
-							<MenuItem text="Нов продукт" onClick={() => dialog.open('stockroom/manage-product')} />
+							<MenuItem text="Нов продукт" onClick={() => dialog.open('dialogs/stockroom/manage-product')} />
 						);
 					}}
 				</Subscribe>

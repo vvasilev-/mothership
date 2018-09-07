@@ -17,6 +17,7 @@ mix.webpackConfig({
 		'/js/vendor': [
 			'react',
 			'react-dom',
+			'react-loadable',
 			'react-emotion',
 			'formik',
 			'recompose',
@@ -46,7 +47,9 @@ mix.webpackConfig({
 			async: '/js/common',
 			children: true,
 			minChunks(module) {
-				return module.resource && module.resource.indexOf('views') === -1;
+				return module.resource
+					&& module.resource.indexOf('views') === -1
+					&& module.resource.indexOf('dialogs') === -1;
 			}
 		}),
 

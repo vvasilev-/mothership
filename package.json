@@ -20,6 +20,7 @@
         "react": "^16.4.2",
         "react-dom": "^16.4.2",
         "react-emotion": "^9.2.6",
+        "react-loadable": "^5.5.0",
         "recompose": "^0.28.2",
         "sanitize.css": "^6.0.0",
         "unstated": "^2.1.1",

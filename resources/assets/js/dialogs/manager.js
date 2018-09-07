@@ -3,11 +3,15 @@
  */
 import React from 'react';
 import { Subscribe } from 'unstated';
+import { find, assign } from 'lodash';
 
 /**
  * Internal dependencies.
  */
 import DialogContainer from 'state/dialog';
+import Stockroom from 'dialogs/stockroom';
+
+const dialogs = assign({}, Stockroom);
 
 class Manager extends React.Component {
 	/**
@@ -23,8 +27,18 @@ class Manager extends React.Component {
 						return null;
 					}
 
+					const Dialog = find(dialogs, (chunk, key) => key === dialog.state.view);
+
 					return (
-						null
+						<Dialog
+							dialog={dialog}
+							isOpen={dialog.state.visible}
+							canEscapeKeyClose={false}
+							canOutsideClickClose={false}
+							isCloseButtonShown={false}
+							{...dialog.state.props}
+							onClosed={() => dialog.clear()}
+						/>
 					);
 				}}
 			</Subscribe>
