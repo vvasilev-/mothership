@@ -24,4 +24,13 @@ class Product extends Model
     protected $fillable = [
         'title',
     ];
+
+    /**
+     * Association between the product and the variations.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function variations() {
+        return $this->hasMany(ProductVariation::class, 'product_id');
+    }
 }
