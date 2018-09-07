@@ -3,19 +3,21 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Formik, Form as FormikForm } from 'formik';
-import { IconNames } from '@blueprintjs/icons';
+import {
+	Formik,
+	Form as FormikForm,
+	setIn
+} from 'formik';
 import {
 	Intent,
 	Toast,
 	Toaster
 } from '@blueprintjs/core';
+import { IconNames } from '@blueprintjs/icons';
 import {
-	get,
 	has,
-	values,
-	flatten,
-	mapValues
+	reduce,
+	head
 } from 'lodash';
 
 /**
@@ -75,7 +77,9 @@ class Form extends React.PureComponent {
 
 		if (response.status === 422) {
 			formik.setErrors(
-				mapValues(response.data.errors, (errors) => get(errors, '0'))
+				reduce(response.data.errors, (carry, errors, path) => {
+					return setIn(carry, path, head(errors));
+				}, {})
 			);
 		} else {
 			formik.setStatus({
