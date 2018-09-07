@@ -7,7 +7,7 @@ import { Field, getIn } from 'formik';
 /**
  * Internal dependencies.
  */
-import Error from 'components/form-error/error';
+import { Error } from 'components/form-error/style';
 
 class FormError extends React.Component {
 	/**

@@ -18,9 +18,11 @@ import {
 import withRouter from 'common/with-router';
 import Form from 'components/form';
 import FormError from 'components/form-error';
-import Card from 'views/core/login/card';
-import Container from 'views/core/login/container';
-import Actions from 'views/core/login/actions';
+import {
+	View,
+	Card,
+	Actions
+} from 'views/core/login/style';
 import schema from 'views/core/login/schema';
 
 class Login extends React.Component {
@@ -31,7 +33,7 @@ class Login extends React.Component {
 	 */
 	render() {
 		return (
-			<Container>
+			<View>
 				<Card>
 					<Form
 						action={route('core.login')}
@@ -85,7 +87,7 @@ class Login extends React.Component {
 						)}
 					</Form>
 				</Card>
-			</Container>
+			</View>
 		);
 	}
 }
