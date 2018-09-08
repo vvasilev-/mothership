@@ -45,7 +45,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return $this->respondWithChunk('core/login');
+        return $this->respondWithChunk('core/views/login');
     }
 
     /**

@@ -23,6 +23,6 @@ class DashboardController extends Controller
      */
     public function show()
     {
-        return $this->respondWithChunk('core/dashboard');
+        return $this->respondWithChunk('core/views/dashboard');
     }
 }

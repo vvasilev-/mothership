@@ -9,8 +9,8 @@ import { FocusStyleManager } from '@blueprintjs/core';
 /**
  * Internal dependencies.
  */
-import ViewsController from 'views/controller';
-import DialogsController from 'dialogs/controller';
+import ViewsController from 'shared/views';
+import DialogsController from 'shared/dialogs';
 
 /**
  * Disable the focus on non-keyboard interactions.

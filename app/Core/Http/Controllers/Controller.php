@@ -15,14 +15,18 @@ class Controller extends BaseController
     /**
      * Send a response back to the browser with correct JS chunk.
      *
-     * @param  string $chunk
+     * @param  string  $chunk
+     * @param  array  $data
      * @return \Illuminate\Http\Response
      */
-    protected function respondWithChunk($chunk)
+    protected function respondWithChunk($chunk, $data = [])
     {
-        JavaScriptFacade::put([
-            'chunk' => 'views/'. $chunk,
-        ]);
+        JavaScriptFacade::put(array_merge(
+            $data,
+            [
+                'chunk' => $chunk,
+            ]
+        ));
 
         return view('layouts.app');
     }
