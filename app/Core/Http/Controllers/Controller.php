@@ -21,7 +21,7 @@ class Controller extends BaseController
     protected function respondWithChunk($chunk)
     {
         JavaScriptFacade::put([
-            'chunk' => $chunk,
+            'chunk' => 'views/'. $chunk,
         ]);
 
         return view('layouts.app');

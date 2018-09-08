@@ -1,4 +1,10 @@
+/**
+ * Internal dependencies.
+ */
+import Login from 'views/core/login';
+import Dashboard from 'views/core/dashboard';
+
 export default {
-	'core/login': () => import(/* webpackChunkName: 'js/core/login' */ 'views/core/login'),
-	'core/dashboard': () => import(/* webpackChunkName: 'js/core/dashboard' */ 'views/core/dashboard')
+	'views/core/login': Login,
+	'views/core/dashboard': Dashboard
 };

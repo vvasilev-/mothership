@@ -1,3 +1,8 @@
+/**
+ * Internal dependencies.
+ */
+import Dashboard from 'views/stockroom/dashboard';
+
 export default {
-	'stockroom/dashboard': () => import(/* webpackChunkName: 'js/stockroom/dashboard' */ 'views/stockroom/dashboard')
+	'views/stockroom/dashboard': Dashboard
 };

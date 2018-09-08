@@ -1,24 +1,19 @@
 /**
  * External dependencies.
  */
-import React from 'react';
+import Loadable from 'react-loadable';
 
 /**
  * Internal dependencies.
  */
-import Layout from 'layout';
+import Null from 'components/null';
 
-class Dashboard extends React.Component {
-	/**
-	 * Render the component.
-	 *
-	 * @return {Object}
-	 */
-	render() {
-		return (
-			<Layout />
+export default Loadable({
+	loading: Null,
+	loader() {
+		return import(
+			/* webpackChunkName: 'js/views/stockroom/dashboard' */
+			'views/stockroom/dashboard/main'
 		);
 	}
-}
-
-export default Dashboard;
+});
