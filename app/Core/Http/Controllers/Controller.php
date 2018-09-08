@@ -21,7 +21,7 @@ class Controller extends BaseController
      */
     protected function respondWithChunk($chunk, $data = [])
     {
-        JavaScriptFacade::put(array_merge(
+        JavaScriptFacade::put(array_merge_recursive(
             $data,
             [
                 'chunk' => $chunk,

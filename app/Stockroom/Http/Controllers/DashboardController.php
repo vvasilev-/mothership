@@ -2,7 +2,10 @@
 
 namespace App\Stockroom\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Core\Http\Controllers\Controller;
+use App\Stockroom\Http\Resources\ProductResource;
+use App\Stockroom\Models\Product;
 
 class DashboardController extends Controller
 {
@@ -21,8 +24,15 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Request $request)
     {
-        return $this->respondWithChunk('stockroom/dashboard');
+        $products = Product::with('variations')->paginate();
+        $products = ProductResource::collection($products)->response()->getData();
+
+        return $this->respondWithChunk('stockroom/views/dashboard', [
+            'stockroom' => [
+                'products' => $products,
+            ],
+        ]);
     }
 }
