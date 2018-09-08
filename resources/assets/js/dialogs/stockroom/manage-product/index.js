@@ -1,12 +1,15 @@
 /**
  * External dependencies.
  */
-import React from 'react';
 import Loadable from 'react-loadable';
-import { Spinner } from '@blueprintjs/core';
+
+/**
+ * Internal dependencies.
+ */
+import Null from 'components/null';
 
 export default Loadable({
-	loading: () => null,
+	loading: Null,
 	loader() {
 		return import(
 			/* webpackChunkName: 'js/dialogs/stockroom/manage-product' */
