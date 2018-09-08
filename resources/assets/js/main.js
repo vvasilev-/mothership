@@ -9,8 +9,6 @@ import { FocusStyleManager } from '@blueprintjs/core';
 /**
  * Internal dependencies.
  */
-import './styles/global';
-import './styles/document';
 import ViewsController from 'views/controller';
 import DialogsController from 'dialogs/controller';
 

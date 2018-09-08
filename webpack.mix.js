@@ -28,10 +28,7 @@ mix.webpackConfig({
 			'yup',
 			'unstated',
 			'@blueprintjs/core',
-			'@blueprintjs/icons',
-			'@blueprintjs/core/lib/css/blueprint.css',
-			'@blueprintjs/icons/lib/css/blueprint-icons.css',
-			'sanitize.css/sanitize.css'
+			'@blueprintjs/icons'
 		]
 	},
 
@@ -61,7 +58,12 @@ mix.webpackConfig({
 	]
 });
 
-mix.react('resources/assets/js/main.js', 'public/js/bundle.js');
+mix
+	.react('resources/assets/js/main.js', 'public/js/bundle.js')
+	.postCss('resources/assets/css/main.css', 'public/css/bundle.css')
+	.options({
+		processCssUrls: false
+	});
 
 if (mix.inProduction()) {
 	mix.version();

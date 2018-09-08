@@ -8,6 +8,7 @@
     <title>{{ config('app.name') }}</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;subset=cyrillic">
+    <link rel="stylesheet" href="{{ mix('css/bundle.css') }}">
 </head>
 <body>
     @section('app')
