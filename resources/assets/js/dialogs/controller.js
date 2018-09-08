@@ -11,9 +11,17 @@ import { find, assign } from 'lodash';
 import DialogContainer from 'state/dialog';
 import Stockroom from 'dialogs/stockroom';
 
-const dialogs = assign({}, Stockroom);
+/**
+ * Register all dialogs into one dictionary.
+ *
+ * @type {Object}
+ */
+const dialogs = assign(
+	{},
+	Stockroom
+);
 
-class Manager extends React.Component {
+class DialogsController extends React.Component {
 	/**
 	 * Render the component.
 	 *
@@ -46,4 +54,4 @@ class Manager extends React.Component {
 	}
 }
 
-export default Manager;
+export default DialogsController;

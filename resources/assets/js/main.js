@@ -11,8 +11,8 @@ import { FocusStyleManager } from '@blueprintjs/core';
  */
 import './styles/global';
 import './styles/document';
-import DialogManager from 'dialogs/manager';
 import ViewsController from 'views/controller';
+import DialogsController from 'dialogs/controller';
 
 /**
  * Disable the focus on non-keyboard interactions.
@@ -25,7 +25,7 @@ FocusStyleManager.onlyShowFocusOnTabs();
 ReactDOM.render(
 	<Provider>
 		<ViewsController />
-		<DialogManager />
+		<DialogsController />
 	</Provider>,
 	document.querySelector('.app')
 );
