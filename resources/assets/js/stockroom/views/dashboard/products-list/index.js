@@ -3,11 +3,19 @@
  */
 import React from 'react';
 import { Subscribe } from 'unstated';
-import { HTMLTable } from '@blueprintjs/core';
+import {
+	Button,
+	ButtonGroup,
+	HTMLTable,
+	Intent,
+	Icon
+} from '@blueprintjs/core';
+import { IconNames } from '@blueprintjs/icons';
 
 /**
  * Internal dependencies.
  */
+import DialogContainer from 'shared/state/dialog';
 import ProductsContainer from 'stockroom/state/products';
 
 class ProductsList extends React.Component {
@@ -18,21 +26,21 @@ class ProductsList extends React.Component {
 	 */
 	render() {
 		return (
-			<Subscribe to={[ProductsContainer]}>
-				{(products) => {
+			<Subscribe to={[ProductsContainer, DialogContainer]}>
+				{(products, dialog) => {
 					return (
 						<HTMLTable>
 							<thead>
 								<tr>
-									<th>
+									<th style={{ width: '50%' }}>
 										Продукт
 									</th>
 
-									<th>
+									<th style={{ width: '30%' }}>
 										Разновидности
 									</th>
 
-									<th>
+									<th style={{ width: '20%' }}>
 										Действия
 									</th>
 								</tr>
@@ -50,7 +58,17 @@ class ProductsList extends React.Component {
 												{product.variations.length}
 											</td>
 
-											<td>TODO</td>
+											<td>
+												<ButtonGroup minimal>
+													<Button
+														icon={IconNames.EDIT}
+														intent={Intent.WARNING}
+														onClick={() => dialog.open('stockroom/dialogs/manage-product', { product })}
+													/>
+
+													<Button icon={IconNames.TRASH} intent={Intent.DANGER} />
+												</ButtonGroup>
+											</td>
 										</tr>
 									);
 								})}

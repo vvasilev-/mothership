@@ -40,4 +40,29 @@ class ProductsController extends Controller
             'redirect_url' => route('stockroom.dashboard'),
         ]);
     }
+
+    /**
+     * Update a product.
+     *
+     * @param  \App\Core\Http\Requests\CreateProductRequest  $request
+     * @param  \App\Stockroom\Models\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Product $product)
+    {
+        $product->load('variations');
+
+        $inputVariations = collect($request->input('variations'));
+        $storedVariations = $product->getRelation('variations');
+
+        $inputVariationsIds = $inputVariations->map->id;
+        $storedVariationsIds = $storedVariations->map->id;
+
+        $variationsToCreate = $inputVariations->filter(function($variation) {
+            return !isset($variation['id']);
+        });
+
+
+        dd($inputVariationsIds->toArray());
+    }
 }

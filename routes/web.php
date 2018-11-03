@@ -29,10 +29,12 @@ Route::namespace('Core\Http\Controllers')->group(function() {
  */
 Route::namespace('Stockroom\Http\Controllers')
     ->prefix('stockroom')
+    ->name('stockroom.')
     ->group(function() {
-        Route::get('/', 'DashboardController@show')->name('stockroom.dashboard');
+        Route::get('/', 'DashboardController@show')->name('dashboard');
 
         Route::prefix('products')->group(function() {
-            Route::post('/', 'ProductsController@create')->name('stockroom.products.create');
+            Route::post('/', 'ProductsController@create')->name('products.create');
+            Route::put('/{product}', 'ProductsController@update')->name('products.update');
         });
     });

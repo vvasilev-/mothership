@@ -13,6 +13,7 @@ import {
 } from '@blueprintjs/core';
 import { IconNames } from '@blueprintjs/icons';
 import { FieldArray } from 'formik';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies.
@@ -37,6 +38,62 @@ class ManageProductDialog extends React.Component {
 	};
 
 	/**
+	 * Determine if the dialog is used for editing of a product.
+	 *
+	 * @return {Boolean}
+	 */
+	get isEdit() {
+		return !!this.props.product;
+	}
+
+	/**
+	 * Get the title of the dialog.
+	 *
+	 * @return {String}
+	 */
+	get title() {
+		return this.isEdit
+			? 'Редактиране на продукт'
+			: 'Добавяне на продукт';
+	}
+
+	/**
+	 * Get the HTTP method used by the form.
+	 *
+	 * @return {String}
+	 */
+	get method() {
+		return this.isEdit ? 'put' : 'post';
+	}
+
+	/**
+	 * Get the URL used by the form.
+	 *
+	 * @return {String}
+	 */
+	get action() {
+		const { route } = this.props;
+
+		return this.isEdit
+			? route('stockroom.products.update', { product: this.props.product.id }).url()
+			: route('stockroom.products.create').url();
+	}
+
+	/**
+	 * Get the inital values of the form.
+	 *
+	 * @return {Object}
+	 */
+	get initialValues() {
+		const { product } = this.props;
+
+		return {
+			title: get(product, 'title', ''),
+			variations: get(product, 'variations', [{ title: '' }])
+		};
+	}
+
+	/**
 	 * Handle the click on the "Cancel" button.
 	 *
 	 * @return {void}
@@ -52,18 +109,15 @@ class ManageProductDialog extends React.Component {
 	 */
 	render() {
 		return (
-			<Dialog title="Добавяне на продукт" {...this.props}>
+			<Dialog title={this.title} {...this.props}>
 				<Form
-					method="post"
-					action={this.props.route('stockroom.products.create').url()}
+					method={this.method}
+					action={this.action}
+					initialValues={this.initialValues}
 					validationSchema={schema}
-					initialValues={{
-						title: '',
-						variations: [{ title: '' }]
-					}}
 				>
 					{({
-						values: { variations },
+						values,
 						errors,
 						isSubmitting,
 						handleChange,
@@ -75,6 +129,7 @@ class ManageProductDialog extends React.Component {
 									<InputGroup
 										name="title"
 										autoComplete="off"
+										value={values.title}
 										onChange={handleChange}
 										onBlur={handleBlur}
 									/>
@@ -87,7 +142,7 @@ class ManageProductDialog extends React.Component {
 										return (
 											<React.Fragment>
 												<FormGroup label="Разновидности">
-													{variations.map((variation, index) => (
+													{values.variations.map((variation, index) => (
 														<React.Fragment key={index}>
 															<Variation
 																autoComplete="off"
